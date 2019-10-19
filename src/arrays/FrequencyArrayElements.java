@@ -1,9 +1,7 @@
 package arrays;
 
 import java.io.*;
-import java.util.HashMap;
 import java.util.InputMismatchException;
-import java.util.Map;
 
 public class FrequencyArrayElements {
 
@@ -16,6 +14,25 @@ public class FrequencyArrayElements {
             int[] arr = new int[n];
             for (int i = 0; i < n; i++) {
                 arr[i] = in.readInt();
+            }
+            int i = 0;
+            while(i<n){
+                if(arr[i] > 0){
+                    int k = arr[i]-1;
+                    if(arr[k] > 0){
+                        arr[i] = arr[k];
+                        arr[k] = -1;
+                    }else{
+                        --arr[k];
+                        arr[i] = 0;
+                        i++;
+                    }
+                }else{
+                    i++;
+                }
+            }
+            for(int k=0;k<n;k++){
+                out.print(Math.abs(arr[k])+" ");
             }
 
             out.printLine();
