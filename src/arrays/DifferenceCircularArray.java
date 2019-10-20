@@ -11,26 +11,20 @@ public class DifferenceCircularArray {
         int t = in.readInt();
         while (t-- > 0) {
             int n = in.readInt();
-            int k = in.readInt();
-            long[] arr = new long[n];
+            int[] arr = new int[n];
             for (int i = 0; i < n; i++) {
                 arr[i] = in.readInt();
             }
-            int p1 = 0;
-            int p2 = p1 + k - 1;
-
-            while (p1 < n) {
-                if (p2 >= n) {
-                    p2 = n - 1;
+            long sum = 0, min = Integer.MAX_VALUE;
+            for (int i = 0; i <= n-1; i++) {
+                if (i == n-1) {
+                    sum = Math.abs(arr[n - 1] - arr[0]);
+                } else {
+                    sum = Math.abs(arr[i] - arr[i + 1]);
                 }
-                int j = p2;
-                while (p2 >= p1) {
-                    out.print(arr[p2] + " ");
-                    p2--;
-                }
-                p1 = j + 1;
-                p2 = p1 + k - 1;
+                min = Math.min(sum, min);
             }
+            out.printLine(min);
             out.printLine();
         }
         out.close();
