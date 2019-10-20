@@ -6,8 +6,8 @@ import java.util.InputMismatchException;
 public class WaveArray {
 
     public static void main(String[] args) {
-        MaxAndSecondMax.InputReader in = new MaxAndSecondMax.InputReader(System.in);
-        MaxAndSecondMax.OutputWriter out = new MaxAndSecondMax.OutputWriter(System.out);
+        InputReader in = new InputReader(System.in);
+        OutputWriter out = new OutputWriter(System.out);
         int t = in.readInt();
         while (t-- > 0) {
             int n = in.readInt();

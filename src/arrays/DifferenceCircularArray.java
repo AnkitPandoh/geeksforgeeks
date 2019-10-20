@@ -3,7 +3,7 @@ package arrays;
 import java.io.*;
 import java.util.InputMismatchException;
 
-public class FrequencyArrayElements {
+public class DifferenceCircularArray {
 
     public static void main(String[] args) {
         InputReader in = new InputReader(System.in);
@@ -11,28 +11,25 @@ public class FrequencyArrayElements {
         int t = in.readInt();
         while (t-- > 0) {
             int n = in.readInt();
-            int[] arr = new int[n];
+            int k = in.readInt();
+            long[] arr = new long[n];
             for (int i = 0; i < n; i++) {
                 arr[i] = in.readInt();
             }
-            int i = 0;
-            while(i<n){
-                if(arr[i] > 0){
-                    int k = arr[i]-1;
-                    if(arr[k] > 0){
-                        arr[i] = arr[k];
-                        arr[k] = -1;
-                    }else{
-                        --arr[k];
-                        arr[i] = 0;
-                        i++;
-                    }
-                }else{
-                    i++;
+            int p1 = 0;
+            int p2 = p1 + k - 1;
+
+            while (p1 < n) {
+                if (p2 >= n) {
+                    p2 = n - 1;
                 }
-            }
-            for(int k=0;k<n;k++){
-                out.print(Math.abs(arr[k])+" ");
+                int j = p2;
+                while (p2 >= p1) {
+                    out.print(arr[p2] + " ");
+                    p2--;
+                }
+                p1 = j + 1;
+                p2 = p1 + k - 1;
             }
             out.printLine();
         }
