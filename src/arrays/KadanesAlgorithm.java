@@ -18,20 +18,19 @@ public class KadanesAlgorithm {
             for (int i = 0; i < n; i++) {
                 arr[i] = in.readInt();
             }
-            int current_sum = 0;
+            int current_sum = arr[0];
             int max_sum = arr[0];
             int start = 0, end = 0, s = 0;
 
-            for (int i = 0; i < n; i++) {
-                current_sum = current_sum + arr[i];
-                if (current_sum > max_sum) {
-                    max_sum = current_sum;
-                    start = s;
-                    end = i;
+            for (int i = 1; i < arr.length; i++) {
+                current_sum = arr[i] + current_sum;
+                if (current_sum < arr[i]) {
+                    current_sum = arr[i];
+                    start = i;
                 }
-                if (current_sum < 0) {
-                    current_sum = 0;
-                    s = s + 1;
+                if (max_sum < current_sum) {
+                    max_sum = current_sum;
+                    end = i;
                 }
             }
             out.printLine(max_sum);
