@@ -33,7 +33,7 @@ public class KadanesAlgorithm {
                     end = i;
                 }
             }
-            out.printLine(max_sum);
+            out.printLine("max sum : "+max_sum);
             out.printLine("index : " + start + " " + end);
 
         }
